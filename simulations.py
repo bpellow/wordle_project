@@ -22,7 +22,6 @@ def get_word_list_from_file(file_path):
         return []
 
 def filter_possible_answers(possible_answers, last_input, accuracy):
-    
     matched_counts = {char: 0 for char in set(last_input)}
 
     for i, (char, acc) in enumerate(zip(last_input, accuracy)):
@@ -108,7 +107,7 @@ if __name__ == "__main__":
                 print(f"Word {i + 1}: '{guess}', Entropy: {entropy}")
 
             inputs.append(input("\nWhich word did you guess?\n"))
-            accuracy = input("\nEnter the corresponding correctness for each letter: \n('g' for a green letter, 'y' for yellow letter and 'x' for a grey one)\n")
+            accuracy = input("\nEnter the corresponding correctness for each letter: \n('g' for a green letter, 'y' for yellow letter and 'x' for a grey one) e.g. 'gyxxy'\n")
 
             possible_answers = filter_possible_answers(possible_answers, inputs[-1], accuracy)
 
