@@ -21,10 +21,10 @@ def get_word_list_from_file(file_path):
         print(f"An error occurred: {e}")
         return []
 
-def filter_possible_answers(possible_answers, last_input, accuracy):
+def filter_possible_answers(possible_answers, last_input, correctness):
     matched_counts = {char: 0 for char in set(last_input)}
 
-    for i, (char, acc) in enumerate(zip(last_input, accuracy)):
+    for i, (char, acc) in enumerate(zip(last_input, correctness)):
         if acc == 'g':
             possible_answers = [word for word in possible_answers if word[i] == char]
             matched_counts[char] += 1
@@ -83,22 +83,21 @@ def get_best_guesses(possible_guesses):
 
     return scored_guesses[:3]
 
-if __name__ == "__main__":
+def play_game():
     inputs = []
-    accuracy = 'xxxxx'
+    correctness = 'xxxxx'
     possible_answers = get_word_list_from_file(SHORT_WORD_LIST_FILE)
-    best_guesses = []
 
     print("Welcome to Wordle Solver!")
 
-    while len(inputs) < 6 and accuracy != 'ggggg':
+    while len(inputs) < 6 and correctness != 'ggggg':
         print(f"\nATTEMPT {len(inputs) + 1}")
         best_guesses = get_best_guesses(possible_answers)
 
         if len(best_guesses) == 1:
             print(f"The answer is '{best_guesses[0][0]}'")
             inputs.append(best_guesses[0][0])
-            accuracy = 'ggggg'
+            correctness = 'ggggg'
 
         else:
             print(f"Number of possible answers: {len(possible_answers)}")
@@ -107,11 +106,14 @@ if __name__ == "__main__":
                 print(f"Word {i + 1}: '{guess}', Entropy: {entropy}")
 
             inputs.append(input("\nWhich word did you guess?\n"))
-            accuracy = input("\nEnter the corresponding correctness for each letter: \n('g' for a green letter, 'y' for yellow letter and 'x' for a grey one) e.g. 'gyxxy'\n")
+            correctness = input("\nEnter the corresponding correctness for each letter: \n('g' for a green letter, 'y' for yellow letter and 'x' for a grey one) e.g. 'gyxxy'\n")
 
-            possible_answers = filter_possible_answers(possible_answers, inputs[-1], accuracy)
+            possible_answers = filter_possible_answers(possible_answers, inputs[-1], correctness)
 
-    if (accuracy == 'ggggg'):
+    if (correctness == 'ggggg'):
         print(f"\nWell done for getting the answer on attempt number {len(inputs)}!")
     else:
         print("\nBetter luck next time!")
+
+if __name__ == "__main__":
+    play_game()
