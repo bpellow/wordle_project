@@ -9,19 +9,11 @@ The **Wordle Solver** is a Python-based tool designed to assist players in solvi
 - **Entropy-Based Suggestions**: Calculates the most informative guesses to prioritize.
 - **Interactive Gameplay**: Guides users through their guesses and updates suggestions.
 
-## Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/bpellow/wordle_project.git
-   cd wordle-project
-
-## How to Use
-
 ### 1. Start the Solver:
 Run the program, and it will guide you through the process.
-1. cd wordle-project
-2. python simulations.py
+```bash
+   cd wordle-project
+   python simulations.py
 
 ### 2. Make a Guess:
 The solver will suggest the most optimal words based on the remaining possibilities.
@@ -29,7 +21,7 @@ Enter your guessed word into Wordle and provide the guessed word to the solver.
 
 ### 3. Enter Feedback:
 After each guess in Wordle, input the corresponding feedback into the solver:
-E.g. **'gyxxy'**
+E.g. **`gyxxy`**
 - Use **`g`** for green (correct letter, correct position).
 - Use **`y`** for yellow (correct letter, wrong position).
 - Use **`x`** for grey (incorrect letter).
