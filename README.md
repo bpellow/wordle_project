@@ -9,11 +9,14 @@ The **Wordle Solver** is a Python-based tool designed to assist players in solvi
 - **Entropy-Based Suggestions**: Calculates the most informative guesses to prioritize.
 - **Interactive Gameplay**: Guides users through their guesses and updates suggestions.
 
+## How to Use
+
 ### 1. Start the Solver:
 Run the program, and it will guide you through the process.
 ```bash
-   cd wordle-project
-   python simulations.py
+cd wordle-project
+python simulations.py
+```
 
 ### 2. Make a Guess:
 The solver will suggest the most optimal words based on the remaining possibilities.
